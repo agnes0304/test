@@ -7,3 +7,6 @@ def eo(x):
         print("홀수")
 
 eo(x)
+
+def test():
+    print("test")
