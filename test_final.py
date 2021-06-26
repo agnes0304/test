@@ -10,3 +10,9 @@ def up():
             print("*", end='')
         print("")
 
+def diamond():
+	pass
+
+def pyramid():
+	pass
+
