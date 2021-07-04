@@ -10,15 +10,26 @@ def up():
             print("*", end = '')
         print("")
 
-def diamond():
-	pass
-
 def pyramid():
-	for i in range (10): 
-        for a in range(i + 1):
-            print("*", end = '')
-        print("")
+    for a in range(10):
+        for c in range(10 - a):
+            print(' ', end='')
+        for b in range(2 * a + 1):
+            print("*", end='')
+        print()
 
-pyramid()
+def reversePy():
+    for a in range(11):
+        for c in range(a):
+            print(' ', end='')
+        for b in range(20 - (2 * a - 1)):
+            print("*", end='')
+        print()
+    
+def diamond():
+    pyramid()
+    reversePy()
+
+
 
 
