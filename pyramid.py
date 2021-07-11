@@ -12,9 +12,11 @@ def up():
         print()
 
 
+N = int(input()) // 2
+
 def pyramid():
-    for a in range(10):
-        for c in range(10 - a):
+    for a in range(N):
+        for c in range(N - a):
             print(' ', end='')
         for b in range(2 * a + 1):
             print("*", end='')
@@ -22,10 +24,10 @@ def pyramid():
 
 
 def reversePy():
-    for a in range(11):
+    for a in range(N + 1):
         for c in range(a):
             print(' ', end='')
-        for b in range(20 - (2 * a - 1)):
+        for b in range(N * 2 - (2 * a - 1)):
             print("*", end='')
         print()
 
@@ -33,3 +35,6 @@ def reversePy():
 def diamond():
     pyramid()
     reversePy()
+
+
+diamond()
