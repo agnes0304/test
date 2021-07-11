@@ -13,21 +13,19 @@ def up():
 def pyramid():
     for a in range(10):
         for c in range(10 - a):
-            print(' ', end='')
+            print(' ', end = '')
         for b in range(2 * a + 1):
-            print("*", end='')
+            print("*", end = '')
         print()
 
 def reversePy():
     for a in range(11):
         for c in range(a):
-            print(' ', end='')
+            print(' ', end = '')
         for b in range(20 - (2 * a - 1)):
-            print("*", end='')
+            print("*", end = '')
         print()
     
 def diamond():
     pyramid()
     reversePy()
-
-diamond()
