@@ -14,4 +14,36 @@ def makeOddorNotlist():
     print(c)
 
 
-makeOddorNotlist()
+# makeOddorNotlist()
+
+
+b = list()
+# N = int(input())
+
+
+def generateOdd(N):
+    for a in range(N):
+        if a % 2:
+            b.append(a)
+    print(b)
+
+
+# generateOdd(N)
+
+
+N = int(input())
+
+def generatePrimenumber(N):
+    i = list()
+    for a in range(2, N + 1):
+        flag = True
+        for b in range(2, a):
+            if a % b == 0:
+                flag = False
+                break
+        if flag:
+            i.append(a)
+    return i
+
+
+print(generatePrimenumber(N))
