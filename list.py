@@ -17,7 +17,7 @@ def makeOddorNotlist():
 # makeOddorNotlist()
 
 
-b = list()
+#b = list()
 # N = int(input())
 
 
@@ -31,7 +31,7 @@ def generateOdd(N):
 # generateOdd(N)
 
 
-N = int(input())
+#N = int(input())
 
 def generatePrimenumber(N):
     i = list()
@@ -46,4 +46,32 @@ def generatePrimenumber(N):
     return i
 
 
-print(generatePrimenumber(N))
+#print(generatePrimenumber(N))
+
+
+N=int(input())
+
+def reverselist(N):
+    x=list()
+    for i in range(N):
+        x.append(N-i)
+    return x
+
+reverselist(N)
+print(reverselist(N))
+
+
+
+
+Test = [5,4,3,2,1]
+
+#n=int(input())
+
+def remove(a, n):
+    a[n-1]=-1
+    
+
+case = [6,7,8,10]
+
+#remove(case, n)
+#print(case)
