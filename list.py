@@ -49,7 +49,7 @@ def generatePrimenumber(N):
 #print(generatePrimenumber(N))
 
 
-N=int(input())
+#N=int(input())
 
 def reverselist(N):
     x=list()
@@ -57,10 +57,7 @@ def reverselist(N):
         x.append(N-i)
     return x
 
-reverselist(N)
-print(reverselist(N))
-
-
+#print(reverselist(N))
 
 
 Test = [5,4,3,2,1]
@@ -75,3 +72,29 @@ case = [6,7,8,10]
 
 #remove(case, n)
 #print(case)
+
+
+#1. reverslist함수 안에 remove넣기
+#N=int(input())
+#M=int(input())
+
+def reverselist_remove(N, M):
+    x=list()
+    for i in range(N):
+        x.append(N-i)
+    x[M-1]=-1
+    return x
+
+#print(reverselist(N, M))
+
+#2. reverselist함수 안에 remove함수 넣기
+N=int(input())
+M=int(input())
+def reverselist_remove_2(N, M):
+    x=list()
+    for i in range(N):
+        x.append(N-i)
+    remove(x, M)
+    return x
+
+print(reverselist_remove_2(N, M))
