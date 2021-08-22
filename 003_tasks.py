@@ -45,7 +45,7 @@ def swap(s, n, m):
 # 두개로 분리하는 함수를 만들어라. N번째 원소 기준으로 리스트를 분리.
 
 p = [5,10,15,6,11,55,77]
-N = int(input())
+# N = int(input())
 
 def split(p, N):
      left=list()
@@ -55,6 +55,25 @@ def split(p, N):
      print(left, right)
      
 
-split(p,N)
+# split(p,N)
 
 
+# 003.4 과제
+# N번째 원소보다 작으면 less리스트, 크면 greater리스트로
+
+# N이 5면, 실제 리스트에서는 4, o[4] 이 값이랑 리스트의 모든 값을 비교.
+
+o=[5, 10, 15, 6, 11, 55, 77]
+N=int(input())
+
+def sort(o, N):
+     less=list()
+     greater=list()
+     for i in range(len(o)):
+          if o[i] < o[N-1]:
+               less.append(o[i])
+          elif o[i] > o[N-1]:
+               greater.append(o[i])
+     print(less, greater)
+
+sort(o,N)
