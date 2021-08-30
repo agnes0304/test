@@ -97,4 +97,6 @@ def reverse(r):
           r[len(r)-1-i]=e
      return(r)
 
-print(reverse(r))
+# print(reverse(r))
+
+print(9/7)
