@@ -69,7 +69,8 @@ def combineshort():
 
 # 004.plus
 # 1-T까지 전부 더한 값 반환. 
-# 등차수열과 등비수열 일반항 알아두기.
+# 등차수열과 등비수열 일반항 알아두기. 멍청하게 이걸 모르면 어떡하냐
+# https://mathbang.net/609
 
 T=int(input())
 def trauma(T):
