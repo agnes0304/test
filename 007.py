@@ -4,6 +4,9 @@
 
 # 함수
 
+from typing import NewType
+
+
 test = "Jiwoo the legendary of the ji dooo"
 
 # parameter로 t etc. 제대로 선언하도록.
@@ -59,6 +62,7 @@ def reversestr(t):
 # 입력폼의 메모리 사용량을 알고 있잖아. 직전에 그 폼을 예상해서 한 천만개 해놓고.
 # preallocate해야 돼. 오....
 
+
 # 007.2
 # split 함수
 # result = ["Jiwoo", "the", "legendary", "of", "the", "ji", "dooo"]
@@ -106,6 +110,7 @@ def string2reversedList(t):
         if t[i-1] != ' ':
             temp += t[i-1]
             # 인덱스 에러나서 이것저것 해보다가 -1을 넣었는데 나옴. 근데 왜 -1을 해야 하는지 아직 이해하지 못함.
+            # 거꾸로 돌면 3,2,1,0이 아니라 4,3,2,1이다. 그래서 -1해줘야 함.
         else:
             templist.append(temp)
             temp = str()
@@ -114,12 +119,12 @@ def string2reversedList(t):
     result = list()
     for i in range(len(templist), 0, -1):
         result.append(templist[i-1])
-        # 인덱스 에러나서 이것저것 해보다가 -1을 넣었는데 나옴. 근데 왜 -1을 해야 하는지 아직 이해하지 못함.
     return result
 
 
 # 007.5
 # 2차원 배열 형태의 3x3 matrix로 mapping 시키는 함수
+# string의 길이는 항상 9라고 가정합니다.
 # matrix = [
 #    ["A", "B", "C"],
 #    ["D", "E", "F"], 
@@ -129,16 +134,63 @@ def string2reversedList(t):
 raw = "ABCDEFGHI"
 def mapping33(r):
     matrix = list()
-    m = list()
+    m1 = list()
 
     for i in range(len(r)):
-        m.append(r[i])
+        m1.append(r[i])
 
-    matrix.append(m[:3])
-    matrix.append(m[3:6])
-    matrix.append(m[6:9])
+    matrix.append(m1[:3])
+    matrix.append(m1[3:6])
+    matrix.append(m1[6:9])
 
-    for i in range(len(matrix)):
-        print(matrix[i], sep = '\n')
+    return matrix
 
 # 답은 잘 나오지만 틀린 것 같은데 뭐가 틀렸는지 모르겠음.
+# 이게 맞대.
+
+
+# 007.6 v1
+# string의 길이는 항상 3의 배수라고 가정합니다.
+# new_matrix = [["A", "B", "C"], ["D", "E", "F"], ["G", "H", "I"], ["J", "K", "L"],~]
+
+raw = "ABCDEFGHIJKL123ㅈㄷㄱ890ㅑㅐㅔ"
+def mapping3n_v1(r):
+    m2 = list()
+    for i in range(len(r)):
+        m2.append(r[i])
+
+    new_matrix = list()
+    for i in range(len(m2)):
+        if m2[3*i:3*i+3] != list():
+            new_matrix.append(m2[3*i:3*i+3])
+    return new_matrix
+
+# 007.6 v2.
+# 1. 문자열을 하나 하나 반복한다
+# 2. 3개 단위로 끊어서 리스트에 집어 넣음
+# 3. 그 리스트를 다시 new_matrix 리스트에 집어넣는다
+
+raw = "ABCDEFGHIJKL"
+def mapping3n_v2(r):
+    new_matrix2 = list()
+
+    for i in range(len(r)//3):
+        temp = list()
+        # /는 정말 나누는거. 소수점으로 인식. //은 정수형으로 인식. 몫만 가지고 옴. 
+        for j in range(3):
+            temp.append(r[j + (i * 3)])
+            # 인덱스로 접근한다는 생각을 해야함. 
+        new_matrix2.append(temp)
+
+    return new_matrix2
+
+# i는 y축, j는 x축
+
+
+# 007.7
+# def makeMatrix(M: int, N: int, raw: str):
+# 문자열 raw가 주어지면 M x N의 2차원 배열을 반환하는 함수 makeMatrix를 작성하세요.
+# N = 2, M = 4, raw = "testtext"
+# result = [["t", "e"], ["s", "t"], ["t", "e"], ["x", "t"]]
+
+def makeMatrix(M: int, N: int, raw: str):
