@@ -63,6 +63,81 @@ def reversestr(t):
 # preallocate해야 돼. 오....
 
 
+# 007.1
+# case1의 결과 값으로 25를 반환하는 함수 calculator를 만드세요.
+# case2 = "1*90/20"
+# case3 = "327423+1293129-1"
+
+# 일단 다 잘라. str을 int로 감싸면 그게 int로 바뀌긴 하지. 근데 연산자는? 
+# 
+
+case0 = "1+2+3-5+1+1+1+1+1"
+
+def calculator_1(c):
+    temp_n = list() # 숫자 리스트
+    temp_o = list() # 연산자 리스트
+    for i in range(len(c)):
+        if i % 2 == 0 :
+            temp_n.append(c[i])
+        else:
+            temp_o.append(c[i])
+    temp_n.reverse()
+    temp_o.reverse()
+
+    while temp_o: # tmep_o가 비어있기 전까지. (비어있으면 false)
+        N = int(temp_n.pop())
+        N2 = int(temp_n.pop())
+        O = temp_o.pop()
+        N3 = int()
+
+        if O == '+':
+            N3 = N + N2
+            temp_n.append(N3)
+        elif O == '-':
+            N3 = N - N2
+            temp_n.append(N3)
+        
+
+    print(temp_o, temp_n)
+    print("result is ", temp_n.pop())
+
+
+case1 = "1+2+30-8"
+def calculator_2(c): 
+    temp_n = list()
+    temp_o = list()
+    temp_s = str()
+
+    for i in range(len(c)):
+        if c[i].isdigit() == True:
+            temp_s += c[i]
+        else:
+            temp_n.append(int(temp_s))
+            temp_s = str()
+            temp_o.append(c[i])
+    
+    temp_n.append(int(temp_s))
+
+    temp_n.reverse()
+    temp_o.reverse()
+
+    while temp_o: # tmep_o가 비어있기 전까지. (비어있으면 false)
+        N = int(temp_n.pop())
+        N2 = int(temp_n.pop())
+        O = temp_o.pop()
+        N3 = int()
+
+        if O == '+':
+            N3 = N + N2
+            temp_n.append(N3)
+        elif O == '-':
+            N3 = N - N2
+            temp_n.append(N3)
+        
+    print(temp_o, temp_n)
+    print("result is ", temp_n.pop())
+
+
 # 007.2
 # split 함수
 # result = ["Jiwoo", "the", "legendary", "of", "the", "ji", "dooo"]
@@ -192,5 +267,3 @@ def mapping3n_v2(r):
 # 문자열 raw가 주어지면 M x N의 2차원 배열을 반환하는 함수 makeMatrix를 작성하세요.
 # N = 2, M = 4, raw = "testtext"
 # result = [["t", "e"], ["s", "t"], ["t", "e"], ["x", "t"]]
-
-def makeMatrix(M: int, N: int, raw: str):
