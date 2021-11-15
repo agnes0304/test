@@ -13,7 +13,6 @@ test = "Jiwoo the legendary of the ji dooo"
 # 함수 선언할 때 내가 인풋으로 뭘 넣을지 모르는 거잖아. 내가 t에 test라고만 해두면 test만 적용되는 함수인데 그럼 그게 함수겠니.
 # 폰노이만 구조를 왜 처음에 설명했겠니.
 
-
 def reversestr(t):
 
     # 리스트 길이 알고 있는 경우, 아래 방법처럼하면 GC 리스크 감소.
@@ -262,8 +261,4 @@ def mapping3n_v2(r):
 # i는 y축, j는 x축
 
 
-# 007.7
-# def makeMatrix(M: int, N: int, raw: str):
-# 문자열 raw가 주어지면 M x N의 2차원 배열을 반환하는 함수 makeMatrix를 작성하세요.
-# N = 2, M = 4, raw = "testtext"
-# result = [["t", "e"], ["s", "t"], ["t", "e"], ["x", "t"]]
+# 나머지 문제들은 007_matrix
