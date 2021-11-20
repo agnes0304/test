@@ -13,7 +13,7 @@ def makeMatrix(M, N, raw):
 
     return matrix
 
-print(makeMatrix(3,3,"testtext"))
+# print(makeMatrix(3,3,"testtext"))
 
 # 행의 개수가 len(raw)/2보다 많을 때는 ''출력
 def makeMatrix_v2(M, N, raw):
