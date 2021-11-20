@@ -68,7 +68,6 @@ def reversestr(t):
 # case3 = "327423+1293129-1"
 
 # 일단 다 잘라. str을 int로 감싸면 그게 int로 바뀌긴 하지. 근데 연산자는? 
-# 
 
 case0 = "1+2+3-5+1+1+1+1+1"
 
@@ -262,3 +261,55 @@ def mapping3n_v2(r):
 
 
 # 나머지 문제들은 007_matrix
+
+
+# 007.8
+case0 = "1+2+3-5"
+case1 = "1+2+30-8"
+case2 = "1*90/20"
+case3 = "327423+1293129-1"
+
+# 지난번에 다 완성하지 못한 계산기를 다시 만들기. 조건은 같음.
+# 함수의 입력은 string이고 반환 타입은 int 입니다.
+# 곱셉과 나눗셈의 연산자 우선순위는 고려하지 않아도 됩니다. 순서대로 계산하세요.
+
+def cal(c):
+    o = list()
+    v = list()
+    temp = str()
+
+    for i in range(len(c)):
+        if c[i].isdigit():
+            temp += c[i]
+        else:
+            v.append(temp)
+            temp = str()
+            o.append(c[i])
+    
+    v.append(int(temp))
+
+    v.reverse()
+    o.reverse()
+    
+    while o:
+        n1 = int(v.pop())
+        n2 = int(v.pop())
+        op = o.pop()
+        n3 = int()
+        
+        if op == "+":
+            n3 = n1 + n2
+            v.append(n3)
+        elif op == "-":
+            n3 = n1 - n2
+            v.append(n3)
+        elif op == "/":
+            n3 = n1/n2
+            v.append(n3)
+        elif op == "*":
+            n3 = n1*n2
+            v.append(n3)
+        
+    return int(v.pop())    
+
+print(cal(case3))
