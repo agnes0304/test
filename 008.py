@@ -94,8 +94,7 @@ def insertion(r, od):
                 r[i], r[j] = r[j], r[i]
     return r
 
-# 저 이게 insertion을 생각하고 작성하긴 했는데 실제 insertion인지...코드가 bubble sort랑 너무 비슷해서요..
-
+# insertion을 생각하고 작성하긴 했는데 실제 insertion인지...코드가 bubble sort랑 너무 비슷해서..
 # print(insertion(agnes, "asc"))
 
 
@@ -115,10 +114,9 @@ agnes = [70, 80, 10, 3, 54, 1, 30, 99, 21, 65, 47]
 # 사용자가 length, digit, letters, symbols 인풋으로. 
 # 아 아스키 그냥 그 테이블에서 선택못하나.
 
-
 def dashlane(length, dig=True, let=True, sym=True):
     pw_temp = list()
-    digit = [0,1,2,3,4,5,6,7,8,9]
+    digit = ['0','1','2','3','4','5','6','7','8','9']
     
     letters = list()
     for i in range(65, 91):
@@ -188,14 +186,11 @@ def dashlane(length, dig=True, let=True, sym=True):
 
     pw = str()
     for i in range(len(pw_temp)):
-        if pw_temp[i] != str():
-            pw += str(pw_temp[i])
-        else:
-            pw += pw_temp[i]
+        pw += pw_temp[i]
 
     print(pw)
 
-dashlane(20, True, True, True)
-dashlane(20, True, True, False)
-dashlane(31, True, True, True)
-dashlane(31, True, True, False)
+# dashlane(20, True, True, True)
+# dashlane(20, True, True, False)
+# dashlane(31, True, True, True)
+# dashlane(31, True, True, False)
