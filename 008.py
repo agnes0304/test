@@ -2,6 +2,7 @@
 # 100개의 랜덤한 정수값을 가진 리스트를 만들어봐라
 
 import random
+from typing import List
 
 def makerandomlist(n):
     r = list()
@@ -114,7 +115,7 @@ agnes = [70, 80, 10, 3, 54, 1, 30, 99, 21, 65, 47]
 # 사용자가 length, digit, letters, symbols 인풋으로. 
 # 아 아스키 그냥 그 테이블에서 선택못하나.
 
-def dashlane(length, dig=True, let=True, sym=True):
+def dashlane_old(length, dig=True, let=True, sym=True):
     pw_temp = list()
     digit = ['0','1','2','3','4','5','6','7','8','9']
     
@@ -190,7 +191,50 @@ def dashlane(length, dig=True, let=True, sym=True):
 
     print(pw)
 
-# dashlane(20, True, True, True)
-# dashlane(20, True, True, False)
-# dashlane(31, True, True, True)
-# dashlane(31, True, True, False)
+
+def dashlane_new(length, dig=True, lets=True, sym=True):
+    pw_temp = list()
+    if dig == True and lets == True and sym == True:
+        pass
+
+
+import string
+
+# print(string.punctuation)
+
+
+# 008.8
+
+class Stack(List):
+    def __init__(self):
+        self = list()
+
+    def isEmpty(self):
+        if len(self) == 0:
+            return True
+        else:
+            return False
+
+    def push(self, item):
+        self.append(item)
+
+    def pop(self):
+        if len(self) != 0:
+            temp = self[-1]
+            self = self[:-1]
+            return temp
+        else:
+            print("Empty stack")
+
+    def peek(self):
+        if len(self) != 0:
+            print(self[-1])
+        else:
+            print("Empty stack")
+
+    def size(self):
+        return len(self)
+
+a = Stack()
+a.push(2)
+print(a)
