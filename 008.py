@@ -204,37 +204,70 @@ import string
 
 
 # 008.8
+# self는 키워드라서 변수 다른걸로 선언해야 함. 
 
 class Stack(List):
     def __init__(self):
-        self = list()
+        self.stack = list()
+        self.n = 0
 
     def isEmpty(self):
-        if len(self) == 0:
+        if self.n == 0:
             return True
         else:
             return False
 
     def push(self, item):
-        self.append(item)
+        self.stack.append(item)
+        self.n += 1
 
     def pop(self):
-        if len(self) != 0:
-            temp = self[-1]
-            self = self[:-1]
+        if self.n != 0:
+            temp = self.stack[-1]
+            self.stack = self.stack[:-1]
+            self.n -= 1
             return temp
         else:
             print("Empty stack")
 
     def peek(self):
-        if len(self) != 0:
-            print(self[-1])
+        if self.n != 0:
+            print(self.stack[-1])
         else:
             print("Empty stack")
 
     def size(self):
-        return len(self)
+        return self.n
 
-a = Stack()
-a.push(2)
-print(a)
+
+
+# 008.9
+# size랑 empty판별 위한 게 필요
+
+class Queue:
+    def __init__(self):
+        self.queue = []
+        self.n = 0
+
+    def isEmpty(self):
+        if self.n == 0:
+            return True
+        else:
+            return False
+
+    def enqueue(self, item):
+        self.queue.append(item)
+        self.n += 1
+
+    def dequeue(self):
+        if self.n != 0:
+            temp = self.queue[0]
+            self.n -= 1
+            self.queue = self.queue[1:]
+            return temp
+        else: 
+            print("Empty Queue")
+
+    def size(self):
+        return self.n
+
