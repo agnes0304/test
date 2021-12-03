@@ -206,7 +206,7 @@ import string
 # 008.8
 # self는 키워드라서 변수 다른걸로 선언해야 함. 
 
-class Stack(List):
+class Stack():
     def __init__(self):
         self.stack = list()
         self.n = 0
@@ -270,4 +270,39 @@ class Queue:
 
     def size(self):
         return self.n
+
+# q = Queue()
+# q.enqueue("4")
+# q.enqueue("3")
+# q.enqueue("2")
+# q.enqueue("1")
+
+# print(q.queue)
+# # 원래 이렇게 직접 접근하면 안 된다.
+
+# print(type(q))
+
+# 008.10
+# Student 클래스(각 학생은 이름, 학번, 국,영,수 점수가짐)
+# avg() 함수는 국영수 점수의 평균을 반환.
+# sum() 함수는 국영수 점수의 합을 반환.
+# Student 10명을 랜덤으로 만든 다음 평균 점수가 높은 학생 순으로 정렬.
+
+class Student:
+    def __init__(self, name, no, k, e, m):
+        self.name = name
+        self.no = no
+        self.k = k
+        self.e = e
+        self.m = m
+
+    def avg(self):
+        self.a = (self.k + self.e + self.m) / 3
+        return self.a
+
+    def sum(self):
+        self.s = self.k + self.e + self.m
+        return self.s
+
+Students = ['a','b','c','d','e','f','g','h','i','j']
 
