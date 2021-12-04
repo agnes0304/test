@@ -74,19 +74,28 @@ def targetfind(r, t):
 
 # 008.5
 # insertion sort 
-# 아놔 모르겠는데
-# 내가 비교할거를 앞에서부터 비교해서 맞는자리에 끼워넣는거야. 2번은 1번, 3번은 1,2번, 4번은 1,2,3번
-# 내가 비교할 애가 i면 i-1번 비교해야 함. 
+# 80을 70이랑 비교하고, 10을 80, 70이랑 비교하고, 3을 80, 70, 10이랑 비교하고, 54를 80, 70, 10, 3이랑 비교하고
+# 1번은 0
+# 2번은 1,0
+# 3번은 2,1,0
+# 4번은 3,2,1,0
+# 루프도는 건 앞에서. 비교하는건 역순으로?
 
-agnes = [70, 80, 10, 3, 54, 1, 30, 99, 21, 65, 47]
+test = [70, 80, 10, 3, 54, 62, 32, 30]
 
-def insertion():
-    pass
+def insertion(raw):
+    for i in range(len(raw)):   # i는 0,1,2,3,4
+        for j in range(i, 0, -1):
+            if raw[j] < raw[j-1]:
+                raw[j], raw[j-1] = raw[j-1], raw[j]
+    return raw
+
+print(insertion(test))
 
 # 008.6
 # 퀵
 # pivot기준으로 나눠. pivot보다 작은거, pivot, pivot보다 큰거. 
-# 그놈의 recursive.
+# recursive.
 # 일단 랜덤으로 피봇이 정해지고 새 리스트가 있어. 
 # 그 리스트에 맨 처음부터 비교를 해서 피봇보다 작은거 부터 append를 해. 
 
@@ -97,7 +106,6 @@ agnes = [70, 80, 10, 3, 54, 1, 30, 99, 21, 65, 47]
 # 008.7
 # dashlane, PW generator 만들어
 # 사용자가 length, digit, letters, symbols 인풋으로. 
-# 아 아스키 그냥 그 테이블에서 선택못하나.
 
 def dashlane_old(length, dig=True, let=True, sym=True):
     pw_temp = list()
@@ -302,17 +310,13 @@ students = []
 for i in range(10):
     a = Student("wldn{}".format(i) , random.randrange(2000, 2021), random.randrange(1, 100), random.randrange(1, 100), random.randrange(1, 100))
     students.append(a)
-print(students)
-
-for i in range(len(students)):
-    st_svg = students[i].avg()
-    print(st_svg)
+# print(students)
 
 for i in range(len(students)-1):
     for j in range(len(students)-1-i):
         if students[i].avg() < students[i+1].avg():
             students[i], students[i+1] = students[i+1], students[i]
-print(students)
+# print(students)
 
 
 # 008.11
