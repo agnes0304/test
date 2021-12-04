@@ -33,6 +33,32 @@ def makeMatrix_v2(M, N, raw):
 # 아 이거 해결이 안 되네.
 
 
+# replace함수.
+# replace = "legendary"
+# to = "ordinary"
+# result = "The Jiwoo the ordinary"
+# 원본 스트링, 바꾸려는 스트링, 바꿀 값
+
+original = "The Jiwoo the legendary"
+
+def replace(original : str, target : str, new : str):
+    words = original.split(' ')
+    for i in range(len(words)):
+        if words[i] == target:
+            words[i] = new
+
+    result = str()
+    for j in range(len(words)):
+        if j == len(words) - 1:
+            result += words[j]
+        else: 
+            result += words[j] + ' '
+
+    return result
+
+print(replace(original, "legendary", "ordinary"))
+
+
 # 5*5 크기의 2차원 배열 선언, 모두 0으로 넣자.
 # 리스트가 계속 선언되면서 큰 리스트에 불어야겠지. 
 def Matrix(M,N,n):
