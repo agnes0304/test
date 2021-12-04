@@ -2,7 +2,6 @@
 # 100개의 랜덤한 정수값을 가진 리스트를 만들어봐라
 
 import random
-from typing import List
 
 def makerandomlist(n):
     r = list()
@@ -81,23 +80,8 @@ def targetfind(r, t):
 
 agnes = [70, 80, 10, 3, 54, 1, 30, 99, 21, 65, 47]
 
-def insertion(r, od):
-    od = od.lower()
-
-    if od != "asc" and od != "desc":
-        print("asc/desc 중에 하나만 입력")
-
-    for i in range(len(r)):
-        for j in range(i+1):
-            if od == "desc" and r[i] > r[j]:
-                r[i], r[j] = r[j], r[i]
-            elif od == "asc" and r[i] < r[j]:
-                r[i], r[j] = r[j], r[i]
-    return r
-
-# insertion을 생각하고 작성하긴 했는데 실제 insertion인지...코드가 bubble sort랑 너무 비슷해서..
-# print(insertion(agnes, "asc"))
-
+def insertion():
+    pass
 
 # 008.6
 # 퀵
@@ -120,6 +104,7 @@ def dashlane_old(length, dig=True, let=True, sym=True):
     digit = ['0','1','2','3','4','5','6','7','8','9']
     
     letters = list()
+
     for i in range(65, 91):
         letters.append(chr(i))
     for i in range(97, 123):
@@ -161,8 +146,9 @@ def dashlane_old(length, dig=True, let=True, sym=True):
 
 
     elif dig == True and sym == True:
-        i = length//2
+        i = length // 2
         r = length % 2
+
         for _ in range(i):
             pw_temp.append(random.choice(digit))
 
@@ -192,15 +178,20 @@ def dashlane_old(length, dig=True, let=True, sym=True):
     print(pw)
 
 
-def dashlane_new(length, dig=True, lets=True, sym=True):
-    pw_temp = list()
-    if dig == True and lets == True and sym == True:
-        pass
-
-
 import string
 
-# print(string.punctuation)
+def dashlane_new(length : int, dig : bool, lets : bool, sym : bool):
+    result = str()
+    while len(result) <= length:
+        if dig:
+            # 옵션 on/off 참고
+            result += random.choice(string.digits)
+        if lets:
+            result += random.choice(string.ascii_letters)
+        if sym:
+            result += random.choice(string.punctuation)
+
+    return result[:length]
 
 
 # 008.8
@@ -211,11 +202,8 @@ class Stack():
         self.stack = list()
         self.n = 0
 
-    def isEmpty(self):
-        if self.n == 0:
-            return True
-        else:
-            return False
+    def isEmpty(self) -> bool:
+        return not self.n
 
     def push(self, item):
         self.stack.append(item)
@@ -271,16 +259,22 @@ class Queue:
     def size(self):
         return self.n
 
+    def __str__(self):
+        return "나만의 출력 " + str(self.queue)
+
+
 # q = Queue()
 # q.enqueue("4")
 # q.enqueue("3")
 # q.enqueue("2")
 # q.enqueue("1")
 
-# print(q.queue)
-# # 원래 이렇게 직접 접근하면 안 된다.
+# test = list()
 
-# print(type(q))
+# print(q)
+# 이전 버전에서 q.queue이렇게 했는데 원래 직접 접근하면 안 된다.
+# 클래스 내부에 queue 없으면 생겨버리는 상황 발생. 
+
 
 # 008.10
 # Student 클래스(각 학생은 이름, 학번, 국,영,수 점수가짐)
@@ -288,21 +282,43 @@ class Queue:
 # sum() 함수는 국영수 점수의 합을 반환.
 # Student 10명을 랜덤으로 만든 다음 평균 점수가 높은 학생 순으로 정렬.
 
-class Student:
-    def __init__(self, name, no, k, e, m):
-        self.name = name
-        self.no = no
-        self.k = k
-        self.e = e
-        self.m = m
 
-    def avg(self):
-        self.a = (self.k + self.e + self.m) / 3
-        return self.a
+class Student:
+    def __init__(self, name, code, kor, eng, math):
+        self.name = name
+        self.code = code
+        self.kor = kor
+        self.eng = eng
+        self.math = math
 
     def sum(self):
-        self.s = self.k + self.e + self.m
-        return self.s
+        self.s = self.kor + self.eng + self.math
 
-Students = ['a','b','c','d','e','f','g','h','i','j']
+    def avg(self):
+        self.a = (self.kor + self.eng + self.math) / 3
+        return self.a
 
+students = []
+for i in range(10):
+    a = Student("wldn{}".format(i) , random.randrange(2000, 2021), random.randrange(1, 100), random.randrange(1, 100), random.randrange(1, 100))
+    students.append(a)
+print(students)
+
+for i in range(len(students)):
+    st_svg = students[i].avg()
+    print(st_svg)
+
+for i in range(len(students)-1):
+    for j in range(len(students)-1-i):
+        if students[i].avg() < students[i+1].avg():
+            students[i], students[i+1] = students[i+1], students[i]
+print(students)
+
+
+# 008.11
+# linked list의 노드 클래스 구현
+
+class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
