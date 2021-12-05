@@ -4,6 +4,7 @@
 import string
 import time
 import random
+from typing import List
 
 
 def makerandomlist(n):
@@ -123,7 +124,7 @@ def quick(raw):
     
     return quick(left) + [pivot] + quick(right)
 
-print(quick(agnes))
+# print(quick(agnes))
 
 # 008.7
 # dashlane, PW generator 만들어
@@ -348,3 +349,39 @@ class Node:
     def __init__(self, data):
         self.data = data
         self.next = None
+
+
+
+# 008.12
+# Student class 과목 변경 구현
+
+class newStudent(list):
+    subjects = ['KOR', 'ENG', 'MATH']
+
+    def __init__(self, name : str, *score: int):
+        self.name = name
+        self.code = random.randrange(2000,2021)
+        self.scores = []
+        for score in range(*score):
+            self.scores.append(score)
+        
+    def appendSubject(self, item: str):
+        newStudent.subjects.append(item)
+    
+    def sum(self):
+        self.s = 0
+        for i in range(len(self.sub)):
+            self.s += self.sub[i]
+        return self.s
+
+    def avg(self):
+        self.a = sum(self) / len(self.sub)
+        return self.a
+
+s1 = newStudent("지우", 90, 100, 30)
+newStudent.appendSubject(s1, 'PE')
+print(newStudent.subjects)
+print(s1.code)
+print(s1.scores)
+# 90만 저장되는 문제
+
