@@ -1,7 +1,10 @@
 # 008.1
 # 100개의 랜덤한 정수값을 가진 리스트를 만들어봐라
 
+import string
+import time
 import random
+
 
 def makerandomlist(n):
     r = list()
@@ -19,17 +22,18 @@ def makerandomlist(n):
 # order 파라미터를 통해 오름차순, 내림차순을 조절 할 수 있도록 하세요
 
 # 리스트를 받아, if 오름차순이면 전자와 후자 비교, 전자가 크면 스왑. 그리고 i가 옆으로 넘어가게.
-# if 내림차순이면, 전 후 비교, 전자가 작으면 스왑. 
-# 근데 일단 스왑하고 리버스 하는게 빠른가 아님 처음부터 조건을 다르게 설정하는게 나은가. 
+# if 내림차순이면, 전 후 비교, 전자가 작으면 스왑.
+# 근데 일단 스왑하고 리버스 하는게 빠른가 아님 처음부터 조건을 다르게 설정하는게 나은가.
 
 agnes = [70, 80, 10, 3, 54, 1, 30, 99, 21, 65, 47]
+
 
 def bubble(r, od):
     od = od.lower()
 
     if od != "asc" and od != "desc":
-            print("asc/desc 중에 하나를 입력하세요")
-    
+        print("asc/desc 중에 하나를 입력하세요")
+
     for i in range(len(r)-1):   # 비교하는 횟수 하나씩 줄일라고 쓴거야
         for j in range(len(r)-1-i):
             if od == "asc" and r[j] > r[j+1]:
@@ -45,7 +49,6 @@ def bubble(r, od):
 # 008.3
 # 위에서 구현한 bubble 정렬 함수에 입력으로 정수 십만개를 가진 리스트를 넣어서 실행 한 뒤 코드의 실행 시간을 측정 해 보세요.
 
-import time
 
 def measuretime():
     start = time.time()
@@ -73,7 +76,7 @@ def targetfind(r, t):
 
 
 # 008.5
-# insertion sort 
+# insertion sort
 # 80을 70이랑 비교하고, 10을 80, 70이랑 비교하고, 3을 80, 70, 10이랑 비교하고, 54를 80, 70, 10, 3이랑 비교하고
 # 1번은 0
 # 2번은 1,0
@@ -83,6 +86,7 @@ def targetfind(r, t):
 
 test = [70, 80, 10, 3, 54, 62, 32, 30]
 
+
 def insertion(raw):
     for i in range(len(raw)):   # i는 0,1,2,3,4
         for j in range(i, 0, -1):
@@ -90,27 +94,45 @@ def insertion(raw):
                 raw[j], raw[j-1] = raw[j-1], raw[j]
     return raw
 
-print(insertion(test))
+
+# print(insertion(test))
 
 # 008.6
 # 퀵
-# pivot기준으로 나눠. pivot보다 작은거, pivot, pivot보다 큰거. 
+# pivot기준으로 나눠. pivot보다 작은거, pivot, pivot보다 큰거.
 # recursive.
-# 일단 랜덤으로 피봇이 정해지고 새 리스트가 있어. 
-# 그 리스트에 맨 처음부터 비교를 해서 피봇보다 작은거 부터 append를 해. 
+# 일단 랜덤으로 피봇이 정해지고 새 리스트가 있어.
+# 그 리스트에 맨 처음부터 비교를 해서 피봇보다 작은거 부터 append를 해.
 
-agnes = [70, 80, 10, 3, 54, 1, 30, 99, 21, 65, 47]
+agnes = [70, 80, 10, 3, 8, 23, 98, 100, 31, 1]
 
+def quick(raw):
 
+    if len(raw) <= 1:
+        return raw
+
+    left = []
+    right = []
+
+    pivot = raw[0]
+    for i in range(1,len(raw)):
+        if raw[i] <= raw[0]:
+            left.append(raw[i])
+        else: 
+            right.append(raw[i])
+    
+    return quick(left) + [pivot] + quick(right)
+
+print(quick(agnes))
 
 # 008.7
 # dashlane, PW generator 만들어
-# 사용자가 length, digit, letters, symbols 인풋으로. 
+# 사용자가 length, digit, letters, symbols 인풋으로.
 
 def dashlane_old(length, dig=True, let=True, sym=True):
     pw_temp = list()
-    digit = ['0','1','2','3','4','5','6','7','8','9']
-    
+    digit = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+
     letters = list()
 
     for i in range(65, 91):
@@ -128,14 +150,13 @@ def dashlane_old(length, dig=True, let=True, sym=True):
     for i in range(123, 127):
         symbols.append(chr(i))
 
-
     if dig == True and let == True and sym == True:
         i = length // 3
         r = length % 3
 
         for _ in range(i):
             pw_temp.append(random.choice(digit))
-        
+
         for _ in range(i):
             pw_temp.append(random.choice(letters))
 
@@ -152,7 +173,6 @@ def dashlane_old(length, dig=True, let=True, sym=True):
         for _ in range(i+r):
             pw_temp.append(random.choice(letters))
 
-
     elif dig == True and sym == True:
         i = length // 2
         r = length % 2
@@ -162,7 +182,6 @@ def dashlane_old(length, dig=True, let=True, sym=True):
 
         for _ in range(i+r):
             pw_temp.append(random.choice(symbols))
-    
 
     elif let == True and sym == True:
         i = length//2
@@ -176,7 +195,7 @@ def dashlane_old(length, dig=True, let=True, sym=True):
 
     else:
         print("length 이후엔 True/False를 각각 입력, 최소 2개 이상 True")
-    
+
     random.shuffle(pw_temp)
 
     pw = str()
@@ -186,9 +205,7 @@ def dashlane_old(length, dig=True, let=True, sym=True):
     print(pw)
 
 
-import string
-
-def dashlane_new(length : int, dig : bool, lets : bool, sym : bool):
+def dashlane_new(length: int, dig: bool, lets: bool, sym: bool):
     result = str()
     while len(result) <= length:
         if dig:
@@ -203,7 +220,7 @@ def dashlane_new(length : int, dig : bool, lets : bool, sym : bool):
 
 
 # 008.8
-# self는 키워드라서 변수 다른걸로 선언해야 함. 
+# self는 키워드라서 변수 다른걸로 선언해야 함.
 
 class Stack():
     def __init__(self):
@@ -236,7 +253,6 @@ class Stack():
         return self.n
 
 
-
 # 008.9
 # size랑 empty판별 위한 게 필요
 
@@ -261,7 +277,7 @@ class Queue:
             self.n -= 1
             self.queue = self.queue[1:]
             return temp
-        else: 
+        else:
             print("Empty Queue")
 
     def size(self):
@@ -281,7 +297,7 @@ class Queue:
 
 # print(q)
 # 이전 버전에서 q.queue이렇게 했는데 원래 직접 접근하면 안 된다.
-# 클래스 내부에 queue 없으면 생겨버리는 상황 발생. 
+# 클래스 내부에 queue 없으면 생겨버리는 상황 발생.
 
 
 # 008.10
@@ -298,6 +314,7 @@ class Student:
         self.kor = kor
         self.eng = eng
         self.math = math
+        self.subject = []
 
     def sum(self):
         self.s = self.kor + self.eng + self.math
@@ -306,9 +323,14 @@ class Student:
         self.a = (self.kor + self.eng + self.math) / 3
         return self.a
 
+    def addSubject(self, subject):
+        self.subject.append(subject)
+
+
 students = []
 for i in range(10):
-    a = Student("wldn{}".format(i) , random.randrange(2000, 2021), random.randrange(1, 100), random.randrange(1, 100), random.randrange(1, 100))
+    a = Student("wldn{}".format(i), random.randrange(2000, 2021), random.randrange(
+        1, 100), random.randrange(1, 100), random.randrange(1, 100))
     students.append(a)
 # print(students)
 
