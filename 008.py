@@ -370,12 +370,12 @@ class newStudent(list):
     
     def sum(self):
         self.s = 0
-        for i in range(len(self.sub)):
-            self.s += self.sub[i]
+        for i in range(len(self.scores)):
+            self.s += self.scores[i]
         return self.s
 
     def avg(self):
-        self.a = sum(self) / len(self.sub)
+        self.a = sum(self) / len(self.scores)
         return self.a
 
 s1 = newStudent("지우", 90, 100, 30)
