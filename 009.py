@@ -23,11 +23,7 @@ def countWord(word : str):
 # 유저들의 정보를 20대 남/녀만 filtering 해 보세요.
 # /Users/jiwoo/code/file.test/users.json
 
-# 각 개체의 7번째꺼랑, 10번째 꺼에 접근해야 되잖아. 그럼 전체 객체 수만큼 돌면서.
-
-
-# "age" [7] > 20~29
-# "gender" [10] > male, female. 
+# "age" 20~29(agegroup)
 
 
 import json
@@ -35,12 +31,14 @@ import json
 with open("/Users/jiwoo/code/file.test/users.json", 'r') as us_json:
     us_py = json.load(us_json)
 
-def agegroupFilter(age : int):
+def agegroupFilter(ag : int):
     us_targetAge_all = []
 
     for i in range(len(us_py)):
-        if us_py[i]["age"] >= age & us_py[i]["age"] <= (age + 9) :
-            us_targetAge_all = us_py[i] 
+
+        if us_py[i]['age'] >= ag and us_py[i]['age'] <= (ag + 9) :
+            us_targetAge_all.append(us_py[i]) 
+
     return us_targetAge_all
 
 print(agegroupFilter(20))
