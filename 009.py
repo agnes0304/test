@@ -31,32 +31,17 @@ import json
 with open("/Users/jiwoo/code/file.test/users.json", 'r') as us_json:
     us_py = json.load(us_json)
 
+
 # print(len(us_py))
+# 251
 
-def keypresent(i: int, k: str):
-    
-    keys = list(us_py[i].keys())
 
-    for _ in range(len(keys)):
-        if k in keys:
-            return True
-        else: 
-            return False
-
-# print(keypresent(0, "안녕"))
-# 정상
-
-count = 0
-for i in range(len(us_py)):
-    if keypresent(i, 'age') == True:
-        count += 1
-# print(count)
 
 def agegroupFilter(ag : int):
     us_targetAge_all = []
 
     for i in range(len(us_py)):
-        if keypresent(i, 'age') == True and us_py[i]['age'] >= ag and us_py[i]['age'] <= (ag + 9) :
+        if us_py[i]['age'] >= ag and us_py[i]['age'] <= (ag + 9) :
             us_targetAge_all.append(us_py[i])
 
     return us_targetAge_all
@@ -70,6 +55,3 @@ print(len(agegroupFilter(60)))
 print(len(agegroupFilter(70)))
 print(len(agegroupFilter(80)))
 print(len(agegroupFilter(90)))
-
-
-# age 없는 애들 처리?
