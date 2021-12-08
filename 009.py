@@ -25,17 +25,13 @@ def countWord(word : str):
 
 # "age" 20~29(agegroup)
 
-
 import json
 
 with open("/Users/jiwoo/code/file.test/users.json", 'r') as us_json:
     us_py = json.load(us_json)
 
-
 # print(len(us_py))
 # 251
-
-
 
 def agegroupFilter(ag : int):
     us_targetAge_all = []
@@ -46,12 +42,37 @@ def agegroupFilter(ag : int):
 
     return us_targetAge_all
 
-print(len(agegroupFilter(10)))
-print(len(agegroupFilter(20)))
-print(len(agegroupFilter(30)))
-print(len(agegroupFilter(40)))
-print(len(agegroupFilter(50)))
-print(len(agegroupFilter(60)))
-print(len(agegroupFilter(70)))
-print(len(agegroupFilter(80)))
-print(len(agegroupFilter(90)))
+# print(len(agegroupFilter(10)))
+# print(len(agegroupFilter(20)))
+# print(len(agegroupFilter(30)))
+# print(len(agegroupFilter(40)))
+# print(len(agegroupFilter(50)))
+# print(len(agegroupFilter(60)))
+# print(len(agegroupFilter(70)))
+# print(len(agegroupFilter(80)))
+# print(len(agegroupFilter(90)))
+
+
+# 009.05
+# 008에서 만든 Student 클래스로 1000명의 학생을 만드세요.
+# Student 클래스를 JSON 형태로 표현합니다.
+# 1000명의 학생 정보를 file write해 json으로 저장합니다.
+
+import random
+import student
+import json
+
+A_class = [] 
+for i in range(1000):
+    st = student.Student("A{}".format(i))
+    sb1 = student.Subject("KOR", random.randrange(1,100))
+    sb2 = student.Subject("ENG", random.randrange(1,100))    
+    sb3 = student.Subject("MATH", random.randrange(1,100))
+    st.addSubject(sb1)
+    st.addSubject(sb2)
+    st.addSubject(sb3)
+
+    A_class.append(st)
+
+
+print(A_class[0].subjects[0][1])
