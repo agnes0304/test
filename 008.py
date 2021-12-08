@@ -355,33 +355,68 @@ class Node:
 # 008.12
 # Student class 과목 변경 구현
 
-class newStudent(list):
-    subjects = ['KOR', 'ENG', 'MATH']
+# c1) list를 상속 할 필요 X
+# c2) One to Many Mapping 구조
+# c3) 한 명의 Student는 여러개의 Subject
+# c4) Student 클래스는 Subject List를 가지도록
 
-    def __init__(self, name : str, *score: int):
-        self.name = name
-        self.code = random.randrange(2000,2021)
-        self.scores = []
-        for score in range(*score):
-            self.scores.append(score)
+# 생성을 하게 되면, 
+# [{"name" : "wldn", "ID" : "2016", "scores" {"KOR" : 100, "ENG" : 30, "MATH": 20}} ... ]
+
+# class newStudent(list):
+#     subjects = ['KOR', 'ENG', 'MATH']
+
+#     def __init__(self, name : str, *score: int):
+#         self.name = name
+#         self.code = random.randrange(2000,2021)
+#         self.scores = []
+#         for score in range(*score):
+#             self.scores.append(score)
         
-    def appendSubject(self, item: str):
-        newStudent.subjects.append(item)
+#     def appendSubject(self, item: str):
+#         newStudent.subjects.append(item)
     
-    def sum(self):
-        self.s = 0
-        for i in range(len(self.scores)):
-            self.s += self.scores[i]
-        return self.s
+#     def sum(self):
+#         self.s = 0
+#         for i in range(len(self.scores)):
+#             self.s += self.scores[i]
+#         return self.s
 
-    def avg(self):
-        self.a = sum(self) / len(self.scores)
-        return self.a
+#     def avg(self):
+#         self.a = sum(self.scores) / len(self.scores)
+#         return self.a
 
-s1 = newStudent("지우", 90, 100, 30)
-newStudent.appendSubject(s1, 'PE')
-print(newStudent.subjects)
-print(s1.code)
-print(s1.scores)
-# 90만 저장되는 문제
+# s1 = newStudent("지우", 90, 100, 30)
+# newStudent.appendSubject(s1, 'PE')
+# print(newStudent.subjects)
+# print(s1.code) 
+# print(s1.scores)
+
+
+class newStudent:
+
+    def __init__(self, name: str):
+        self.name = name
+        self.id = random.randrange(2000,2021)
+        self.subjects = []
+
+    def addSubject(self, s: Subject):
+        self.subjects.append(s)
+
+
+class Subject:
+
+    def __init__(self, title : str, score : int):
+        self.title = title
+        self.score = score 
+
+
+A_class = []
+for i in range(1000):
+    s = newStudent("A{}".format(i))
+    s.addSubject("KOR", random.randrange(1,100))
+    s.addSubject("END", random.randrange(1,100))
+    s.addSubject("MATH", random.randrange(1,100))
+    
+    A_class.append(s)
 
