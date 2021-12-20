@@ -107,6 +107,7 @@ def insertion(raw):
 
 agnes = [70, 80, 10, 3, 8, 23, 98, 100, 31, 1]
 
+
 def quick(raw):
 
     if len(raw) <= 1:
@@ -116,12 +117,12 @@ def quick(raw):
     right = []
 
     pivot = raw[0]
-    for i in range(1,len(raw)):
+    for i in range(1, len(raw)):
         if raw[i] <= raw[0]:
             left.append(raw[i])
-        else: 
+        else:
             right.append(raw[i])
-    
+
     return quick(left) + [pivot] + quick(right)
 
 # print(quick(agnes))
@@ -129,6 +130,7 @@ def quick(raw):
 # 008.7
 # dashlane, PW generator 만들어
 # 사용자가 length, digit, letters, symbols 인풋으로.
+
 
 def dashlane_old(length, dig=True, let=True, sym=True):
     pw_temp = list()
@@ -351,7 +353,6 @@ class Node:
         self.next = None
 
 
-
 # 008.12
 # Student class 과목 변경 구현
 
@@ -363,16 +364,16 @@ class Node:
 
 class Subject:
 
-    def __init__(self, title : str, score : int):
+    def __init__(self, title: str, score: int):
         self.title = title
-        self.score = score 
+        self.score = score
 
 
 class newStudent:
 
     def __init__(self, name: str):
         self.name = name
-        self.id = random.randrange(2000,2021)
+        self.id = random.randrange(2000, 2021)
         self.subjects = []
 
     def addSubject(self, s: Subject):
