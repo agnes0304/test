@@ -52,17 +52,10 @@ class User:
         else:
             del self.myposts[num - 1]
 
-    def update(self):
-        self.myposts[0].update()
-        pass
-
-        # update 글로벌로 만들어서 사용
-    
-    def append(self, p_id, n_str):
+    def update(self, p_id, n_str):
         target = findPostById(p_id)
-        target.cnt += n_str
+        target.cnt = n_str
         target.time = datetime.now()
-        # update에 포함 시키기
 
 
 class Post:
