@@ -42,8 +42,8 @@ class User:
     def callmyPost(self):
         return self.myposts
 
-    def create(self, cnt):
-        newPost = Post(self.name + str(len(self.myposts) + 1), cnt)
+    def create(self, content):
+        newPost = Post(self.name + str(len(self.myposts) + 1), content)
         self.myposts.append(newPost)
 
     def delete(self, num: int):
@@ -59,9 +59,9 @@ class User:
 
 
 class Post:
-    def __init__(self, p_id: str, cnt):
+    def __init__(self, p_id: str, content):
         self.p_id = p_id
-        self.contents = cnt
+        self.content = content
         self.time = datetime.now()
         self.heart = 0
         self.comments = []
@@ -99,23 +99,23 @@ def bookmark(frm: User, to: User, p_id):
         print("You're blocked")
 
 
-u1=User("u1", "u1_id", "u1_pw", "19970304", "u1@gmail.com")
-u2=User("u2", "u2_id", "u2_pw", "19970305", "u2@gmail.com")
-u3=User("u3", "u3_id", "u3_pw", "19970306", "u3@gmail.com")
+# u1=User("u1", "u1_id", "u1_pw", "19970304", "u1@gmail.com")
+# u2=User("u2", "u2_id", "u2_pw", "19970305", "u2@gmail.com")
+# u3=User("u3", "u3_id", "u3_pw", "19970306", "u3@gmail.com")
 
-u1.changeName("J")
-u2.changeName("H")
-u3.changeName("M")
+# u1.changeName("J")
+# u2.changeName("H")
+# u3.changeName("M")
 
-u1.block(u2)
-print(u1.blocking)
+# u1.block(u2)
+# print(u1.blocking)
 
-u1.create("first post")
-print(u1.myposts)
-print(u1.myposts[0].p_id)
+# u1.create("first post")
+# print(u1.myposts)
+# print(u1.myposts[0].p_id)
 
-bookmark(u2,u1,'J1')
-addHeart(u2,u1,"J1")
-addComment(u3,u1,'J1', "good!")
+# bookmark(u2,u1,'J1')
+# addHeart(u2,u1,"J1")
+# addComment(u3,u1,'J1', "good!")
 
-print(u1.myposts[0].comments)
+# print(u1.myposts[0].comments)
