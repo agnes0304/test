@@ -4,6 +4,7 @@ import socket
 import threading
 
 sv = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+sv.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 sv.bind(('127.0.0.1', 10000))
 sv.listen()
 
@@ -18,10 +19,11 @@ def broadcast(message, me):
         if c != me:
             c.send(message)
 
-def handler(cs):
+def handler(cs, addr):
     while True:
         message = cs.recv(4096)
         if message == b"exit":
+            print(f'{addr} out')
             clients.remove(cs)
             cs.close()
             return
@@ -37,7 +39,7 @@ while True:
     print(f"{addr} has been connected")
     clients.append(c)
 
-    t = threading.Thread(target=handler, args=(c,))
+    t = threading.Thread(target=handler, args=(c, addr))
     t.start()
 
 sv.close()
