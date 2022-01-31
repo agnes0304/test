@@ -13,4 +13,4 @@ def twoDarray():
             print(test[d][i], end=' ')
         print()
 
-twoDarray()
+# twoDarray()

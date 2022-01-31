@@ -1,11 +1,9 @@
 # 009.03
 # 입력으로 주어진 str이 몇번 등장하는지 count하는 함수
 
-
 import student
 import random
 import json
-
 
 def countWord(word: str):
     count = 0
@@ -30,13 +28,11 @@ def countWord(word: str):
 
 # "age" 20~29(agegroup)
 
-
 with open("/Users/jiwoo/code/file.test/users.json", 'r') as us_json:
     us_py = json.load(us_json)
 
 # print(len(us_py))
 # 251
-
 
 def agegroupFilter(ag: int):
     us_targetAge_all = []
@@ -57,11 +53,11 @@ def agegroupFilter(ag: int):
 # print(len(agegroupFilter(80)))
 # print(len(agegroupFilter(90)))
 
+
 # 009.05
 # 008에서 만든 Student 클래스로 1000명의 학생을 만드세요.
 # Student 클래스를 JSON 형태로 표현합니다.
 # 1000명의 학생 정보를 file write해 json으로 저장합니다.
-
 
 students = []
 
@@ -77,5 +73,3 @@ for i in range(1000):
     st.addSubject(sb3)
 
     students.append(st)
-
-

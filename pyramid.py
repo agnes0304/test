@@ -36,5 +36,4 @@ def diamond():
     pyramid()
     reversePy()
 
-
 diamond()

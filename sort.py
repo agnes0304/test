@@ -14,3 +14,5 @@ def sortasc(r):
             else:
                 pass
     return r
+
+# 008.5부터 다른 sorting func 구현.

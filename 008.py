@@ -6,7 +6,6 @@ import time
 import random
 from typing import List
 
-
 def makerandomlist(n):
     r = list()
     for i in range(n):
@@ -27,7 +26,6 @@ def makerandomlist(n):
 # 근데 일단 스왑하고 리버스 하는게 빠른가 아님 처음부터 조건을 다르게 설정하는게 나은가.
 
 agnes = [70, 80, 10, 3, 54, 1, 30, 99, 21, 65, 47]
-
 
 def bubble(r, od):
     od = od.lower()
@@ -50,7 +48,6 @@ def bubble(r, od):
 # 008.3
 # 위에서 구현한 bubble 정렬 함수에 입력으로 정수 십만개를 가진 리스트를 넣어서 실행 한 뒤 코드의 실행 시간을 측정 해 보세요.
 
-
 def measuretime():
     start = time.time()
     bubble(agnes, "asc")
@@ -69,11 +66,11 @@ def targetfind(r, t):
         if r[i] == t:
             print(i+1, "번째에 있음")
 
-# r = makerandomlist(100000)
-# start = time.time()
-# targetfind(r, 100)
-# end = time.time()
-# print(f"{end-start:.5f}초")
+r = makerandomlist(100000)
+start = time.time()
+targetfind(r, 100)
+end = time.time()
+print(f"{end-start:.5f}초")
 
 
 # 008.5
@@ -87,7 +84,6 @@ def targetfind(r, t):
 
 test = [70, 80, 10, 3, 54, 62, 32, 30]
 
-
 def insertion(raw):
     for i in range(len(raw)):   # i는 0,1,2,3,4
         for j in range(i, 0, -1):
@@ -95,18 +91,17 @@ def insertion(raw):
                 raw[j], raw[j-1] = raw[j-1], raw[j]
     return raw
 
-
 # print(insertion(test))
+
 
 # 008.6
 # 퀵
 # pivot기준으로 나눠. pivot보다 작은거, pivot, pivot보다 큰거.
 # recursive.
 # 일단 랜덤으로 피봇이 정해지고 새 리스트가 있어.
-# 그 리스트에 맨 처음부터 비교를 해서 피봇보다 작은거 부터 append를 해.
+# 그 리스트에 맨 처음부터 비교를 해서 피봇보다 작은거부터 append를 해.
 
 agnes = [70, 80, 10, 3, 8, 23, 98, 100, 31, 1]
-
 
 def quick(raw):
 
@@ -127,10 +122,10 @@ def quick(raw):
 
 # print(quick(agnes))
 
+
 # 008.7
 # dashlane, PW generator 만들어
 # 사용자가 length, digit, letters, symbols 인풋으로.
-
 
 def dashlane_old(length, dig=True, let=True, sym=True):
     pw_temp = list()
@@ -309,7 +304,6 @@ class Queue:
 # sum() 함수는 국영수 점수의 합을 반환.
 # Student 10명을 랜덤으로 만든 다음 평균 점수가 높은 학생 순으로 정렬.
 
-
 class Student:
     def __init__(self, name, code, kor, eng, math):
         self.name = name
@@ -328,7 +322,6 @@ class Student:
 
     def addSubject(self, subject):
         self.subject.append(subject)
-
 
 students = []
 for i in range(10):
@@ -361,13 +354,11 @@ class Node:
 # c3) 한 명의 Student는 여러개의 Subject
 # c4) Student 클래스는 Subject List를 가지도록
 
-
 class Subject:
 
     def __init__(self, title: str, score: int):
         self.title = title
         self.score = score
-
 
 class newStudent:
 

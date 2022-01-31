@@ -44,6 +44,7 @@ def findDELETE(N):
             n.append(f[i])
     return n
 
+
 # 004.4
 # (index, number) index번째에 number 넣기
 f = [10, 6, 9, 2, 3, 5, 6, 6 ,7, 8, 5, 6, 2, 16, 6]
@@ -66,6 +67,7 @@ def combine():
 
 def combineshort():
     return o + m
+
 
 # 004.plus
 # 1-T까지 전부 더한 값 반환. 
